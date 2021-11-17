@@ -15,6 +15,9 @@ public class CarServiceImp implements CarService {
 
     @Override
     public List<Car> getCars(int count) {
+        if(count <=0 || count > 5) {
+            count = 5;
+        }
         return carDao.getCars(count);
     }
 }
