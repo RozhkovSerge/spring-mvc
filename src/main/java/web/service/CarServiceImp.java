@@ -10,12 +10,16 @@ import java.util.List;
 @Service
 public class CarServiceImp implements CarService {
 
-    @Autowired
     private CarDao carDao;
+
+    @Autowired
+    public CarServiceImp(CarDao carDao) {
+        this.carDao = carDao;
+    }
 
     @Override
     public List<Car> getCars(int count) {
-        if(count <=0 || count > 5) {
+        if (count <= 0 || count > 5) {
             count = 5;
         }
         return carDao.getCars(count);
